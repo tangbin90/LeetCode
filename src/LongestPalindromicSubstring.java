@@ -1,6 +1,6 @@
 import java.lang.*;
 
-public class Longest_Palindromic_Substring{
+public class LongestPalindromicSubstring {
 	private int start;
 	public int maxLength;
 	private String string;
@@ -34,7 +34,7 @@ public class Longest_Palindromic_Substring{
 	}
 
 	public static void main(String[] args){
-		Longest_Palindromic_Substring lps = new Longest_Palindromic_Substring();
+		LongestPalindromicSubstring lps = new LongestPalindromicSubstring();
 		String str="aabaaaaaa";
 		System.out.println(lps.longestPalindromicSubstring(str));
 		System.out.println(lps.maxLength);
