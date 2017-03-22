@@ -31,7 +31,7 @@ public class ReverseInteger {
         return reverse;
     }
 
-    
+
     public static void main(String[] args){
         ReverseInteger ri = new ReverseInteger();
         System.out.println(ri.reverse(1534236469));
