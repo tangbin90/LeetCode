@@ -1,16 +1,15 @@
-import static java.lang.Math.abs;
-
 /**
- * Created by TangBin on 22/03/2017.
+ * @author TangBin
+ * @date 22/03/2017 3:45 PM
+ * @version V1.0
  */
 public class PalindromeNumber {
     public boolean isPalindrome(int x) {
-        if(x<0)
-            return false;
-        return x==reversenum(x)?true:false;
+        return x >= 0 && x == reversenum(x);
     }
 
-    public int reversenum(int x) {
+    @SuppressWarnings("Duplicates")
+    private int reversenum(int x) {
         int pos=0;
 
         int temp = x;
@@ -28,5 +27,10 @@ public class PalindromeNumber {
             x=x/10;
         }
         return reverse;
+    }
+
+    public static void main(String[] args){
+        PalindromeNumber pn = new PalindromeNumber();
+        System.out.println(pn.isPalindrome(121));
     }
 }

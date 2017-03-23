@@ -2,7 +2,7 @@ import java.lang.*;
 
 public class LongestPalindromicSubstring {
 	private int start;
-	public int maxLength;
+	private int maxLength;
 	private String string;
 	private String longestPalindromicSubstring(String str){
 		if(str.length()<2)
@@ -18,7 +18,7 @@ public class LongestPalindromicSubstring {
 	}
 
 	private void extendStr(int low, int high){
-		int length=0;
+		int length;
 		while(low>=0&&high<string.length()){
 			if(string.charAt(low)==string.charAt(high)){
 				length=high-low+1;
