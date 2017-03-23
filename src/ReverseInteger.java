@@ -1,10 +1,14 @@
 import static java.lang.Math.abs;
 
 /**
- * Created by TangBin on 21/03/2017.
+ * @Package ${PACKAGE_NAME}
+ * @author TangBin
+ * @date 21/03/2017 1:57 PM
+ * @version V1.0
  */
 public class ReverseInteger {
-    public int reverse(int x) {
+    @SuppressWarnings("Duplicates")
+    private int reverse(int x) {
         int pos=0;
 
         Boolean isPositive = true;
