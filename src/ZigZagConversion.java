@@ -14,9 +14,9 @@
  convert("PAYPALISHIRING", 3) should return "PAHNAPLSIIGYIR".
  Subscribe to see which companies asked this question.
  */
-import java.util.*;
 
 public class ZigZagConversion {
+    @SuppressWarnings("WeakerAccess")
     public String convert(String s, int numRows) {
 
         StringBuffer[] sb = new StringBuffer[numRows];
