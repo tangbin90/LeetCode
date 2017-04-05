@@ -24,17 +24,37 @@ isMatch("aab", "c*a*b") → true
 
 public class RegularExpressionMatching {
     public boolean isMatch(String s, String p) {
-        if(s.equals(p))
-            return true;
+        boolean[][] dprecord = new boolean[s.length()+1][p.length()+1];
+        int strlength=s.length();
+        int patlength=p.length();
+        dprecord[0][0]=true;
+        for(int i=1;i<=p.length();i++){
+            if(p.charAt(i-1)=='*'){
+                if(i>1&&dprecord[0][i-2])
+                    dprecord[0][i]=true;
+            }
+        }
 
-        if(p.equals(""))
-            return false;
 
+        for(int i=0;i<strlength;i++){
+            for(int j=0;j<patlength;j++){
+                if(s.charAt(i)==p.charAt(j)||p.charAt(j)=='.')
+                    dprecord[i+1][j+1]=dprecord[i][j];
 
-        return true;
+                else if(p.charAt(j)=='*'){
+                    if(j>0&&(p.charAt(j-1)!='.'&&p.charAt(j-1)!=s.charAt(i)))
+                        dprecord[i+1][j+1] = dprecord[i+1][j-1];
+                    else
+                        dprecord[i+1][j+1]=dprecord[i+1][j]|dprecord[i+1][j-1]|dprecord[i][j+1];
+                }
+            }
+        }
+        return dprecord[strlength][patlength];
     }
 
     public static void main(String... args){
-        String s = null;
+        RegularExpressionMatching rem = new RegularExpressionMatching();
+        System.out.println(rem.isMatch("aaa","ab*ac*a"));
     }
 }
+
