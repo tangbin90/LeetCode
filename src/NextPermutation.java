@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 /**
  * Created by tangbin1 on 2017/7/12.
  */
@@ -6,24 +8,29 @@ public class NextPermutation {
         if(nums==null || nums.length<=1)
             return;
         int length = nums.length;
-        int pos=0;
+        int i=length-2;
         int num = nums[0];
 
-        for(int i=length-1;i>0;i--){
-            if(nums[i-1]<nums[i]) {
-                num = nums[i-1];
-                pos=i-1;
-                break;
-            }
+        while (i >= 0 && nums[i + 1] <= nums[i]) {
+            i--;
         }
-
-        int posj = 0;
-        for(int j=length-1;j>=0;j--)
-            if(nums[j]>num) {
-                posj = j;
-                break;
+        if(i>=0) {
+            int j = nums.length - 1;
+            while (j >= 0 && nums[j] <= nums[i]) {
+                j--;
             }
-        switchnum(nums,pos,posj);
+            switchnum(nums, i, j);
+        }
+        reverse(nums, i + 1);
+    }
+
+    private void reverse(int[] nums, int start) {
+        int i = start, j = nums.length - 1;
+        while (i < j) {
+            switchnum(nums, i, j);
+            i++;
+            j--;
+        }
     }
     public void switchnum(int[] nums, int pos1, int pos2){
         int temp=nums[pos1];
@@ -32,7 +39,9 @@ public class NextPermutation {
     }
 
     public static void main(String... args){
-        int[] nums={1,2,3};
+        int[] nums={1,3,2};
         new NextPermutation().nextPermutation(nums);
+        for(int num: nums)
+        System.out.print(num+" ");
     }
 }
