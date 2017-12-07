@@ -14,6 +14,29 @@ The array may contain duplicates.
  */
 public class NO81_SearchInRotatedSortedArray {
     public boolean search(int[] nums, int target) {
-        return true;
+        if(nums.length==0)
+            return false;
+        int start = 0;
+        int end = nums.length-1;
+        while(start<end){
+            int mid = (start+end)/2;
+            if(nums[mid]==target)
+                return true;
+            if(nums[mid]>nums[end]){
+                if(nums[mid]>target && nums[start] <= target) end = mid-1;
+                else start = mid+1;
+            }else if(nums[mid]<nums[end]){
+                if(nums[mid]<target && target<=nums[end] ) start = mid+1;
+                else end = mid-1;
+            }else{
+                end--;
+            }
+        }
+        return nums[start]==target;
+    }
+
+    public static void main(String[] args) {
+        int[] nums = {3,1};
+        System.out.println(new NO81_SearchInRotatedSortedArray().search(nums,0));
     }
 }
