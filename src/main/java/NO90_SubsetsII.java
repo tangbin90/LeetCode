@@ -56,9 +56,52 @@ public class NO90_SubsetsII {
         return lli;
     }
 
+    public List<List<Integer>> subsetsWithDup2(int[] nums) {
+        Arrays.sort(nums);
+        List<List<Integer>> res = new ArrayList<>();
+        List<Integer> each = new ArrayList<>();
+        helper(res, each, 0, nums);
+        return res;
+    }
+    public void helper(List<List<Integer>> res, List<Integer> each, int pos, int[] n) {
+        if (pos <= n.length) {
+            res.add(each);
+        }
+        int i = pos;
+        while (i < n.length) {
+            each.add(n[i]);
+            helper(res, new ArrayList<>(each), i + 1, n);
+            each.remove(each.size() - 1);
+            i++;
+            while (i < n.length && n[i] == n[i - 1]) {i++;}
+        }
+        return;
+    }
+
+    public List<List<Integer>> subsetsWithDupIII(int[] nums) {
+        Arrays.sort(nums);
+        List<List<Integer>> res = new ArrayList<>();
+        subsetsWithDupHelper(nums, 0, res, new ArrayList<>());
+        return res;
+    }
+
+    private void subsetsWithDupHelper(int[] nums, int pos, List<List<Integer>> res, List<Integer> tmpRes) {
+        // subset means it does not need contain all elements, so the condition is <= rather than ==
+        // and do not return after this statement
+        if(pos <= nums.length) res.add(new ArrayList<>(tmpRes));
+
+        for(int i=pos; i<nums.length; i++) {
+            // avoid duplicates
+            if(i > pos && nums[i] == nums[i-1])
+                continue;
+            tmpRes.add(nums[i]);
+            subsetsWithDupHelper(nums, i + 1, res, tmpRes);
+            tmpRes.remove(tmpRes.size() - 1);
+        }
+    }
     public static void main(String[] args) {
-        int[] nums = {1,1};
+        int[] nums = {1,1,1,2};
         NO90_SubsetsII subsets = new NO90_SubsetsII();
-        System.out.println(subsets.subsetsWithDup(nums));
+        System.out.println(subsets.subsetsWithDupIII(nums));
     }
 }
