@@ -30,7 +30,28 @@ import entity.TreeNode;
 public class NO105_buildTree {
     public TreeNode buildTree(int[] preorder, int[] inorder) {
         TreeNode tree  = new TreeNode(preorder[0]);
-        tree.left = buildTree();
+        int i=0;
+        for( i=0;i<inorder.length;i++){
+            if(preorder[0]==inorder[i])
+                break;
+        }
+        tree.left = buildTree(preorder,1,inorder,0,i-1);
+        tree.right = buildTree(preorder,1,inorder,i+1,inorder.length-1);
         return tree;
+    }
+
+    public TreeNode buildTree(int[] preOrder,int index, int[] inOrder,int start, int end){
+        if(start==end)
+            return new TreeNode(preOrder[index]);
+        TreeNode tree  = new TreeNode(preOrder[index]);
+        int i = start;
+        for(;i<=end;i++){
+            if(inOrder[i]==preOrder[index])
+                break;
+        }
+        tree.left = buildTree(preOrder,index+1,inOrder,start,i-1);
+        tree.right = buildTree(preOrder,index+1,inOrder,i+1,end);
+        return tree;
+
     }
 }
