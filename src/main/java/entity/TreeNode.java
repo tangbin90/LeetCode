@@ -19,4 +19,13 @@ public class TreeNode {
     public TreeNode left;
     public TreeNode right;
     public TreeNode(int x) { val = x; }
+    public String toString(){
+        String ans = "";
+        if(left!=null)
+            ans+=left.toString();
+        ans=ans+" "+val;
+        if(right!=null)
+            ans+=right.toString();
+        return ans;
+    }
 }

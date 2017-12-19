@@ -29,29 +29,36 @@ import entity.TreeNode;
  */
 public class NO105_buildTree {
     public TreeNode buildTree(int[] preorder, int[] inorder) {
-        TreeNode tree  = new TreeNode(preorder[0]);
-        int i=0;
-        for( i=0;i<inorder.length;i++){
-            if(preorder[0]==inorder[i])
-                break;
+        if(preorder.length==0||inorder.length==0)
+            return null;
+
+        TreeNode treeNode = buildTree(preorder,0,inorder,0,inorder.length-1);
+        return treeNode;
+    }
+
+    public TreeNode buildTree(int[] preorder,int preStart, int[] inOrder,int inStart, int inEnd){
+        if (preStart > preorder.length - 1 || inStart > inEnd) {
+            return null;
         }
-        tree.left = buildTree(preorder,1,inorder,0,i-1);
-        tree.right = buildTree(preorder,1,inorder,i+1,inorder.length-1);
+        TreeNode tree  = new TreeNode(preorder[preStart]);
+        int inIndex = 0; // Index of current root in inorder
+        for(int i=inStart;i<=inEnd;i++){
+            if(inOrder[i]==preorder[preStart]){
+                inIndex=i;
+            }
+        }
+
+        tree.left = buildTree(preorder, preStart+1, inOrder, inStart, inIndex-1);
+
+        tree.right = buildTree(preorder, preStart+inIndex-inStart+1, inOrder, inIndex + 1, inEnd);
+
         return tree;
     }
 
-    public TreeNode buildTree(int[] preOrder,int index, int[] inOrder,int start, int end){
-        if(start==end)
-            return new TreeNode(preOrder[index]);
-        TreeNode tree  = new TreeNode(preOrder[index]);
-        int i = start;
-        for(;i<=end;i++){
-            if(inOrder[i]==preOrder[index])
-                break;
-        }
-        tree.left = buildTree(preOrder,index+1,inOrder,start,i-1);
-        tree.right = buildTree(preOrder,index+1,inOrder,i+1,end);
-        return tree;
-
+    public static void main(String[] args) {
+        int[] preOrder = {7,-10,-4,3,-1,2,-8,11};
+        int[] inOrder = {7,-10,-4,3,-1,2,-8,11};
+        TreeNode treeNode = new NO105_buildTree().buildTree(preOrder,inOrder);
+        System.out.println(treeNode.toString());
     }
 }
