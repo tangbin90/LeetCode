@@ -25,8 +25,7 @@ public class NO85_MaximalRectangle {
         int[] leftWidth = new int[colNum];
         int[] rightWidth = new int[colNum];
         int[] height = new int[colNum];
-        int maxA = 0;
-        for(int i=0;i<colNum;i++){
+        int maxA = 0;for(int i=0;i<colNum;i++){
             leftWidth[i]=0;
             rightWidth[i]=colNum;
             height[i]=0;
