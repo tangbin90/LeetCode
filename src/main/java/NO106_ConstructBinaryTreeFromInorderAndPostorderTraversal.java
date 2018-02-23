@@ -8,6 +8,8 @@
 
 import entity.TreeNode;
 
+import javax.xml.bind.SchemaOutputResolver;
+
 /**
  * @author: TangBin 17082720 
  * @Email: 17082720@cnsuning.com
@@ -46,9 +48,11 @@ public class NO106_ConstructBinaryTreeFromInorderAndPostorderTraversal {
             return null;
         int head = postorder[postEnd];
         int index = -1;
-        for(int i=inStart;i<=inEnd;index++){
-            if(inorder[i]==head)
-                index=i;
+        for(int i=inStart;i<=inEnd;i++){
+            if(inorder[i]==head) {
+                index = i;
+                break;
+            }
         }
         if(index==-1)
             return null;
@@ -56,7 +60,16 @@ public class NO106_ConstructBinaryTreeFromInorderAndPostorderTraversal {
         int rightnum = inEnd-index;
         headNode.left =  buildTree(inorder, inStart,index-1, postorder, postStart,  postEnd-1-rightnum);
         headNode.right= buildTree(inorder,index+1,inEnd,postorder,postEnd-rightnum,postEnd-1);
-        return null;
+        return headNode;
+    }
+
+
+    public static void main(String[] args){
+        int[] inorder = new int[]{9,3,15,20,7};
+        int[] postorder = new int[]{9,15,7,20,3};
+        NO106_ConstructBinaryTreeFromInorderAndPostorderTraversal reConstruct = new NO106_ConstructBinaryTreeFromInorderAndPostorderTraversal();
+        TreeNode treeNode = reConstruct.buildTree(inorder,postorder);
+        System.out.println(treeNode.toString());
     }
 
 }
