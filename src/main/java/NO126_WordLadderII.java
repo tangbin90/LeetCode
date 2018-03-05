@@ -18,32 +18,85 @@ import java.util.*;
 public class NO126_WordLadderII {
     public List<List<String>> findLadders(String beginWord, String endWord, List<String> wordList) {
         HashSet<String> dictionary = new HashSet<>(wordList);
-        return null;
-    }
+        List<List<String>> res = new ArrayList<>();
+        HashMap<String, ArrayList<String>> nodeNeighbors = new HashMap<>();
+        HashMap<String, Integer> distance = new HashMap<>();
+        dictionary.add(beginWord);
+        ArrayList<String> solution = new ArrayList<>();
+        dictionary.add(beginWord);
+        distance.put(beginWord,0);
+        bfs(beginWord, endWord, dictionary, nodeNeighbors,distance);
+        dfs(beginWord, endWord,nodeNeighbors,distance,solution,res);
 
-    public ArrayList<String> getNeighbors(String word, HashSet<String> dictionary){
-        int wordlength = word.length();
-        char chs[] = word.toCharArray();
-        ArrayList<String> res = new ArrayList<>();
-        for(int i=0;i<wordlength;i++){
-            for(int j='a';j<='z';j++){
-                if(chs[i]==j) continue;
-                char save = chs[i];
-                chs[i] = (char)j;
-                if(dictionary.contains(String.valueOf(chs)))
-                    res.add(String.valueOf(chs));
-                chs[i] = save;
-            }
-        }
         return res;
     }
 
+    private void bfs(String start, String end, HashSet<String> dictionary, HashMap<String, ArrayList<String>> nodeNeighbors,HashMap<String, Integer> distance) {
+        for(String word : dictionary){
+            nodeNeighbors.put(word,getNeighbors(word,dictionary));
+        }
+
+        Queue<String> queue = new LinkedList<>();
+        queue.offer(start);
+
+        while(!queue.isEmpty()){
+            int size = queue.size();
+            for(int i=0;i<size;i++){
+                String word = queue.poll();
+                int curDistance = distance.get(word);
+                ArrayList<String> neighbors = nodeNeighbors.get(word);
+                for(String neighbor : neighbors){
+                    if(!distance.containsKey(neighbor)) {
+                        distance.put(neighbor, curDistance + 1);
+                        if (end.equals(neighbor))
+                            break;
+                        else
+                            queue.offer(neighbor);
+                    }
+                }
+            }
+        }
+    }
+
+    private void dfs(String start, String end,  HashMap<String, ArrayList<String>> nodeNeighbors,HashMap<String, Integer> distance,
+    ArrayList<String> individualSequence, List<List<String>> results) {
+        individualSequence.add(start);
+        if(end.equals(start)){
+            results.add(new ArrayList<>(individualSequence));
+        }else {
+            ArrayList<String> neighbors = nodeNeighbors.get(start);
+            for (String neighbor : neighbors){
+                if(distance.containsKey(neighbor)&&distance.get(start)+1==distance.get(neighbor))
+                    dfs(neighbor,end, nodeNeighbors,distance,individualSequence,results);
+            }
+        }
+        individualSequence.remove(individualSequence.size()-1);
+    }
+
+    public ArrayList<String> getNeighbors(String word, HashSet<String> dictionary){
+    int wordlength = word.length();
+    char chs[] = word.toCharArray();
+    ArrayList<String> res = new ArrayList<>();
+    for(int i=0;i<wordlength;i++){
+        for(int j='a';j<='z';j++){
+            if(chs[i]==j)
+                continue;
+            char save = chs[i];
+            chs[i] = (char)j;
+            if(dictionary.contains(String.valueOf(chs)))
+                res.add(String.valueOf(chs));
+            chs[i] = save;
+        }
+    }
+    return res;
+}
+
     public static void main(String[] args){
-        String[] strs = new String[]{"asd","ask","jdk","aaa","abv"};
-        HashSet<String> dictionary = new HashSet<String>();
-        dictionary.addAll(Arrays.asList(strs));
+        String[] strs = new String[]{"most","fist","lost","cost","fish"};
+        String begin = "lost";
         NO126_WordLadderII wordLadderII = new NO126_WordLadderII();
-        List<String> ls = wordLadderII.getNeighbors("asd",dictionary);
-        System.out.println(ls.toString());
+        List<String> list = Arrays.asList(strs);
+        List<List<String>> ls = wordLadderII.findLadders(begin,"cost",list);
+        System.out.printf(ls.toString());
     }
 }
