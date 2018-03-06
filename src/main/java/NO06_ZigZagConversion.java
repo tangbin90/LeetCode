@@ -15,7 +15,7 @@
  Subscribe to see which companies asked this question.
  */
 
-public class ZigZagConversion {
+public class NO06_ZigZagConversion {
     @SuppressWarnings("WeakerAccess")
     public String convert(String s, int numRows) {
 
@@ -37,7 +37,7 @@ public class ZigZagConversion {
     }
 
     public static void main(String[] args){
-        ZigZagConversion zig = new ZigZagConversion();
+        NO06_ZigZagConversion zig = new NO06_ZigZagConversion();
         System.out.println(zig.convert("tangbingogo",18));
     }
 }
