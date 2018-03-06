@@ -1,12 +1,11 @@
 import java.util.Comparator;
-import java.util.HashSet;
 import java.util.PriorityQueue;
 
 /**
  * Created by tangbin1 on 2017/7/3.
  */
 
-public class MergeKLists {
+public class NO23_MergeKLists {
 
 
     public ListNode mergeKLists(ListNode[] lists){
@@ -44,7 +43,7 @@ public class MergeKLists {
         ListNode l2 = new ListNode(1);
         ListNode[] lists = new ListNode[1];
         lists[0] = l2;
-        MergeKLists mk = new MergeKLists();
+        NO23_MergeKLists mk = new NO23_MergeKLists();
         ListNode ln = mk.mergeKLists(lists);
     }
 }

@@ -8,7 +8,7 @@ import static java.lang.Math.min;
  * @create: 2017/11/29 10:03
  * @description:
  */
-public class TrappingRainWater {
+public class NO42_TrappingRainWater {
     public int trap(int[] height){
         if(height.length==0)
             return 0;

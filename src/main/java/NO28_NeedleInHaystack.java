@@ -1,7 +1,7 @@
 /**
  * Created by tangbin1 on 2017/7/5.
  */
-public class NeedleInHaystack {
+public class NO28_NeedleInHaystack {
     public int strStr(String haystack, String needle){
         if(haystack.equals(needle))
             return 0;
@@ -22,7 +22,7 @@ public class NeedleInHaystack {
     }
 
     public static void main(String... args){
-        NeedleInHaystack needleInHaystack = new NeedleInHaystack();
+        NO28_NeedleInHaystack needleInHaystack = new NO28_NeedleInHaystack();
         int pos = needleInHaystack.strStr("mississippi","pi");
         System.out.println(pos);
     }

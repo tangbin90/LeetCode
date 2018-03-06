@@ -1,9 +1,7 @@
-import java.util.Arrays;
-
 /**
  * Created by tangbin1 on 2017/7/12.
  */
-public class NextPermutation {
+public class NO31_NextPermutation {
     public void nextPermutation(int[] nums) {
         if(nums==null || nums.length<=1)
             return;
@@ -40,7 +38,7 @@ public class NextPermutation {
 
     public static void main(String... args){
         int[] nums={1,3,2};
-        new NextPermutation().nextPermutation(nums);
+        new NO31_NextPermutation().nextPermutation(nums);
         for(int num: nums)
         System.out.print(num+" ");
     }
