@@ -1,4 +1,3 @@
-import javax.swing.event.InternalFrameEvent;
 import java.util.*;
 
 /**
@@ -15,7 +14,7 @@ import java.util.*;
  * }
  */
 
-public class MergeSection {
+public class NO56_MergeSection {
 
     public List<Interval> merge(List<Interval> intervals) {
         List<Interval> listInterval = new ArrayList<>();
@@ -59,7 +58,7 @@ public class MergeSection {
         list.add(interval3);
         list.add(interval4);
         list.add(interval5);
-        list = new MergeSection().merge(list);
+        list = new NO56_MergeSection().merge(list);
         for(Interval interval: list)
             System.out.println(interval.start+" "+interval.end);
     }
