@@ -1,11 +1,9 @@
-import java.util.TreeMap;
-
 /**
  * @author: 17082720 tangbin
  * @create: 2017/11/28 19:11
  * @description:
  */
-public class FirstMissingPositive {
+public class NO41_FirstMissingPositive {
     public int firstMissingPositive(int[] nums){
         int base = nums.length;
         int[] numstemp = new int[nums.length+1];
@@ -22,7 +20,7 @@ public class FirstMissingPositive {
 
 
     public static void main(String[] args){
-        FirstMissingPositive firstMissingPositive = new FirstMissingPositive();
+        NO41_FirstMissingPositive firstMissingPositive = new NO41_FirstMissingPositive();
         System.out.println( firstMissingPositive.firstMissingPositive(new int[]{3,4,-1,1}));
     }
 }

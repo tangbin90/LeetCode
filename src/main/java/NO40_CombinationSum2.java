@@ -8,7 +8,7 @@ import java.util.Stack;
  * @create: 2017/11/28 18:07
  * @description:
  */
-public class CombinationSum2 {
+public class NO40_CombinationSum2 {
     public List<List<Integer>> combinationSum2(int[] candidates, int target) {
         List<List<Integer>> result = new ArrayList<>();
         Arrays.sort(candidates);
@@ -40,7 +40,7 @@ public class CombinationSum2 {
     public static void main(String[] args){
         int target = 8;
         int[] candidates = new int[]{10, 1, 2, 7, 6, 1, 5};
-        CombinationSum2 combinationSumIns = new CombinationSum2();
+        NO40_CombinationSum2 combinationSumIns = new NO40_CombinationSum2();
         List<List<Integer>> result =  combinationSumIns.combinationSum2(candidates,target);
         System.out.println(result);
     }

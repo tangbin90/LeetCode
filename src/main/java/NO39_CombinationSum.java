@@ -17,7 +17,7 @@ A solution set is:
 [2, 2, 3]
 ]
  */
-public class CombinationSum {
+public class NO39_CombinationSum {
 
     public List<List<Integer>> combinationSum(int[] candidates, int target) {
         List<List<Integer>> result = new ArrayList<>();
@@ -50,7 +50,7 @@ public class CombinationSum {
     public static void main(String[] args){
         int target = 50;
         int[] candidates = new int[]{2,2,3,4,5,1};
-        CombinationSum combinationSumIns = new CombinationSum();
+        NO39_CombinationSum combinationSumIns = new NO39_CombinationSum();
         List<List<Integer>> result =  combinationSumIns.combinationSum(candidates,target);
         System.out.println(result);
     }

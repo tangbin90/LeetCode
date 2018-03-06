@@ -1,5 +1,3 @@
-package main.java;
-
 /**
  * @author TangBin
  * @version V1.0
@@ -7,7 +5,7 @@ package main.java;
  * @descriptrion
  *
  */
-public class SearchRange {
+public class NO34_SearchRange {
     public int[] searchRange(int[] nums, int target) {
         int pos = binarySearch(nums,0,nums.length-1,target);
         if(pos==-1)
@@ -43,7 +41,7 @@ public class SearchRange {
     }
 
     public static void main(String... args){
-        SearchRange searchRange = new SearchRange();
+        NO34_SearchRange searchRange = new NO34_SearchRange();
         int[] nums={1,2,3,3,3,3,3,4,4,5,6,6,7};
         int[] poss = searchRange.searchRange(nums,3);
         System.out.println(poss[0]+" "+poss[1]);

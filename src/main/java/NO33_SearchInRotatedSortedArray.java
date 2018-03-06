@@ -1,11 +1,9 @@
-package main.java;
-
 /**
  * @author TangBin
  * @version V1.0
  * @date 27/11/2017 9:38 PM
  */
-public class SearchInRotatedSortedArray {
+public class NO33_SearchInRotatedSortedArray {
     public int search(int[] nums, int target) {
         if(nums.length==0)
             return -1;
@@ -33,7 +31,7 @@ public class SearchInRotatedSortedArray {
     }
 
     public static void main(String[] args){
-        SearchInRotatedSortedArray searchInRotatedSortedArray = new SearchInRotatedSortedArray();
+        NO33_SearchInRotatedSortedArray searchInRotatedSortedArray = new NO33_SearchInRotatedSortedArray();
         int[] nums = {4,5,6,7,0,1,2,3};
         int pos = searchInRotatedSortedArray.search(nums,7);
         System.out.println(pos);
