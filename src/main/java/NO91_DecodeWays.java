@@ -85,6 +85,6 @@ public class NO91_DecodeWays {
     public static void main(String... args){
         NO91_DecodeWays decodeWays = new NO91_DecodeWays();
 
-        System.out.println(decodeWays.numDecodings("123123123121231231"));
+        System.out.println(decodeWays.numDecodings("523123123121231231"));
     }
 }

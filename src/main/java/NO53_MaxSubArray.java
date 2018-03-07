@@ -3,7 +3,7 @@
  * @create: 2017/12/1 11:01
  * @description:
  */
-public class MaxSubArray {
+public class NO53_MaxSubArray {
     public int maxSubArray(int[] nums){
         if(nums.length==0)
             return 0;
@@ -24,7 +24,7 @@ public class MaxSubArray {
     }
 
     public static void main(String... args){
-        MaxSubArray maxSubArray = new MaxSubArray();
+        NO53_MaxSubArray maxSubArray = new NO53_MaxSubArray();
         System.out.println(maxSubArray.maxSubArray(new int[]{8,-19,5,-4,20}));
     }
 }

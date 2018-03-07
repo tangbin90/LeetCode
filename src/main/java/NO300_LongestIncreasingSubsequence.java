@@ -6,15 +6,15 @@ import java.util.Arrays;
  * @version V1.0
  * @date 01/04/2017 9:26 AM
  */
-public class LongestIncreasingSubsequence {
-    public int LIS(ArrayList<Integer> list){
-        int arrayLength = list.size();
+public class NO300_LongestIncreasingSubsequence {
+    public int LIS(int[] nums){
+        int arrayLength = nums.length;
         int[] dint=new int[arrayLength];
         int len=0;
         for(int i=0;i<arrayLength;i++){
             dint[i]=1;
             for(int j=0;j<i;j++){
-                if(list.get(i)>=list.get(j)&&dint[j]+1>dint[i])
+                if(nums[i]>=nums[j]&&dint[j]+1>dint[i])
                     dint[i]=dint[j]+1;
             }
             if(dint[i]>len)
@@ -27,8 +27,8 @@ public class LongestIncreasingSubsequence {
     }
 
     public static void main(String[] args){
-        ArrayList<Integer> arrayList = new ArrayList<Integer>(Arrays.asList(1,2,3,2,1,2,3,4,5,6,7));
-        LongestIncreasingSubsequence longIS = new LongestIncreasingSubsequence();
-        System.out.println(longIS.LIS(arrayList));
+        int[] array = new int[]{1,2,3,2,1,2,3,4,5,6,7};
+        NO300_LongestIncreasingSubsequence longIS = new NO300_LongestIncreasingSubsequence();
+        System.out.println(longIS.LIS(array));
     }
 }
