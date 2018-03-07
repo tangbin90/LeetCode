@@ -7,7 +7,7 @@ import java.util.List;
  * @version V1.0
  * @date 11/04/2017 10:51 AM
  */
-public class ThreeSumClosest {
+public class NO16_ThreeSumClosest {
     public static int threeSumClosestToTarget(int[] nums, int target) {
         Arrays.sort(nums);
         int com = Integer.MAX_VALUE;

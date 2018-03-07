@@ -1,13 +1,9 @@
-package main.java;
-
-import static java.lang.Math.min;
-
 /**
  * @author TangBin
  * @version V1.0
  * @date 30/11/2017 8:18 PM
  */
-public class Jump {
+public class NO55_Jump {
     public int jump(int[] nums) {
         if(nums.length<=1)
             return 0;
@@ -48,7 +44,7 @@ public class Jump {
 
     public static void main(String[] args){
         int[] nums=new int[]{2,3,3,1,0,0};
-        Jump jump = new Jump();
+        NO55_Jump jump = new NO55_Jump();
         int path=jump.jump(nums);
         System.out.println(path);
     }

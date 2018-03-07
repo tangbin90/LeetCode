@@ -3,7 +3,7 @@ import java.util.*;
 /**
  * Created by tangbin1 on 2017/7/3.
  */
-public class Parentheses {
+public class NO20_ValidParentheses {
     public Map<Character, Character> brankChar;
     public Boolean isValid(String s){
         if(s.equals(""))
@@ -55,7 +55,7 @@ public class Parentheses {
         return stack.empty();
     }
     public static void main(String[] args){
-        Parentheses parent = new Parentheses();
+        NO20_ValidParentheses parent = new NO20_ValidParentheses();
         System.out.println(parent.isValid("()[]{}"));
     }
 }

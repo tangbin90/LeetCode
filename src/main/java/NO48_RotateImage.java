@@ -5,7 +5,7 @@ import java.util.Map;
  * @create: 2017/12/1 10:16
  * @description:
  */
-public class RotateImage {
+public class NO48_RotateImage {
     public void rotate(int[][] matrix){
         for(int i=0;i<matrix.length/2;i++){
             int[] temp =  matrix[i];

@@ -22,7 +22,7 @@ isMatch("ab", ".*") → true
 isMatch("aab", "c*a*b") → true
  */
 
-public class RegularExpressionMatching {
+public class NO10_RegularExpressionMatching {
     public boolean isMatch(String s, String p) {
         boolean[][] dprecord = new boolean[s.length()+1][p.length()+1];
         int strlength=s.length();
@@ -53,7 +53,7 @@ public class RegularExpressionMatching {
     }
 
     public static void main(String... args){
-        RegularExpressionMatching rem = new RegularExpressionMatching();
+        NO10_RegularExpressionMatching rem = new NO10_RegularExpressionMatching();
         System.out.println(rem.isMatch("aaa","ab*ac*a"));
     }
 }

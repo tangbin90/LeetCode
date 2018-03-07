@@ -3,7 +3,7 @@
  * @version V1.0
  * @date 05/04/2017 3:52 PM
  */
-public class IntegerToRoman {
+public class NO12_IntegerToRoman {
     public final String[] M={"","M","MM","MMM"};
     public final String[] C={"", "C","CC","CCC","CD","D","DC","DCC","DCCC","CM"};
     public final String X[] = {"", "X", "XX", "XXX", "XL", "L", "LX", "LXX", "LXXX", "XC"};
@@ -14,7 +14,7 @@ public class IntegerToRoman {
 
 
     public static void main(String[] args){
-        IntegerToRoman iToR=new IntegerToRoman();
+        NO12_IntegerToRoman iToR=new NO12_IntegerToRoman();
         System.out.println(iToR.intToRoman(12));
     }
 }

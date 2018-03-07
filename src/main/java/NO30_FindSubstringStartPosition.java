@@ -3,7 +3,7 @@ import java.util.*;
 /**
  * Created by tangbin1 on 2017/7/10.
  */
-public class FindSubstringStartPosition {
+public class NO30_FindSubstringStartPosition {
     public List<Integer> findSubString(String s, String[] words){
         List<Integer> li = new LinkedList<>();
         if(s==null || words==null|| words.length==0||s.length()<words.length*words[0].length()) return li;
@@ -33,7 +33,7 @@ public class FindSubstringStartPosition {
     }
 
     public static void main(String[] args){
-        FindSubstringStartPosition findSubstringStartPosition = new FindSubstringStartPosition();
+        NO30_FindSubstringStartPosition findSubstringStartPosition = new NO30_FindSubstringStartPosition();
         String[] words = {"a"};
         findSubstringStartPosition.findSubString("taa",words);
     }

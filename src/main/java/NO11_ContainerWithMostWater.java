@@ -5,7 +5,7 @@ import static java.lang.Math.min;
  * @version V1.0
  * @date 05/04/2017 3:24 PM
  */
-public class ContainerWithMostWater {
+public class NO11_ContainerWithMostWater {
     public int maxArea(int[] height) {
         int length = height.length;
         int begin = 0;
@@ -27,7 +27,7 @@ public class ContainerWithMostWater {
     }
 
     public static void main(String... args){
-        ContainerWithMostWater cwm = new ContainerWithMostWater();
+        NO11_ContainerWithMostWater cwm = new NO11_ContainerWithMostWater();
         int[] height = {6,2,3,4,5,5,6};
         System.out.println(cwm.maxArea(height));
     }

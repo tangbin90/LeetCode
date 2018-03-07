@@ -4,7 +4,7 @@ import java.util.*;
 /**
  * Created by tangbin1 on 2017/6/29.
  */
-public class FourSumSolution {
+public class NO18_FourSumSolution {
     public static List<List<Integer>> fourSum(int[] nums, int target){
         Arrays.sort(nums);
         Set<List<Integer>> fourSumList = new LinkedHashSet<>();

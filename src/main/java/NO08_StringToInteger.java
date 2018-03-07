@@ -15,7 +15,7 @@
  If the correct value is out of the range of representable values,
  INT_MAX (2147483647) or INT_MIN (-2147483648) is returned.
  */
-public class StringToInteger {
+public class NO08_StringToInteger {
     private int myAtoi(String str){
         str = str.trim();
         int length = str.length();
@@ -49,7 +49,7 @@ public class StringToInteger {
     }
 
     public static void main(String[] args){
-        StringToInteger sti = new StringToInteger();
+        NO08_StringToInteger sti = new NO08_StringToInteger();
         System.out.println(sti.myAtoi("-2147483647"));
     }
 }

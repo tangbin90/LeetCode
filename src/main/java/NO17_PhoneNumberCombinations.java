@@ -1,11 +1,10 @@
-import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
 /**
  * Created by tangbin1 on 2017/6/29.
  */
-public class PhoneNumberCombinations {
+public class NO17_PhoneNumberCombinations {
     private final String[] strs = {"0", "1", "abc", "def", "ghi", "jkl", "mno","pqrs", "tuv", "wxyz"};
     public List<String> letterCombinations(String digits){
         List<String> combinationList = new LinkedList<String>();
@@ -32,7 +31,7 @@ public class PhoneNumberCombinations {
             System.out.println("right");
         else
             System.out.println("wrong");
-        PhoneNumberCombinations phoneNumberCombinations = new PhoneNumberCombinations();
+        NO17_PhoneNumberCombinations phoneNumberCombinations = new NO17_PhoneNumberCombinations();
         List<String> listStr = phoneNumberCombinations.letterCombinations("234");
         System.out.println(listStr.toString());
     }

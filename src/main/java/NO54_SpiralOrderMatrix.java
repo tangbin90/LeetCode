@@ -6,7 +6,7 @@ import java.util.List;
  * @create: 2017/12/1 14:16
  * @description:
  */
-public class SpiralOrderMatrix {
+public class NO54_SpiralOrderMatrix {
     public List<Integer> spiralOrder(int[][] matrix) {
         List<Integer> ans = new ArrayList<>();
         if(matrix.length==0)
@@ -47,7 +47,7 @@ public class SpiralOrderMatrix {
         matrix[0]=row1;
         matrix[1]=row2;
         matrix[2]=row3;
-        List<Integer> ans = new SpiralOrderMatrix().spiralOrder(matrix);
+        List<Integer> ans = new NO54_SpiralOrderMatrix().spiralOrder(matrix);
         System.out.println(ans);
 
     }

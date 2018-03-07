@@ -1,11 +1,9 @@
-package main.java;
-
 /**
  * @author TangBin
  * @version V1.0
  * @date 19/11/2017 2:53 PM
  */
-public class DecodeWays {
+public class NO91_DecodeWays {
 
     public int numDecodings(String s) {
         if(s.isEmpty())
@@ -85,7 +83,7 @@ public class DecodeWays {
     }
 
     public static void main(String... args){
-        DecodeWays decodeWays = new DecodeWays();
+        NO91_DecodeWays decodeWays = new NO91_DecodeWays();
 
         System.out.println(decodeWays.numDecodings("123123123121231231"));
     }

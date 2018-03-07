@@ -1,11 +1,9 @@
-import static sun.swing.MenuItemLayoutHelper.max;
-
 /**
  * @author: 17082720 tangbin
  * @create: 2017/12/1 14:57
  * @description:
  */
-public class JumpGame {
+public class NO45_JumpGame {
     public boolean canJump(int[] nums) {
         int maxPath=nums[0];
         int iter=0;
@@ -17,7 +15,7 @@ public class JumpGame {
     }
 
     public static void main(String[] args){
-        JumpGame jumpGame = new JumpGame();
+        NO45_JumpGame jumpGame = new NO45_JumpGame();
         //int[] nums = new int[]{2,3,1,1,4};
         int[] nums= new int[]{0};
         System.out.println(jumpGame.canJump(nums));

@@ -1,7 +1,7 @@
 /**
  * Created by tangbin1 on 2017/7/5.
  */
-public class RemoveDuplicates {
+public class NO26_RemoveDuplicates {
     public int removeDuplicates(int[] nums){
       if(nums==null||nums.length==0)
           return 0;
@@ -19,7 +19,7 @@ public class RemoveDuplicates {
 
     public static void main(String[] args){
         int[] nums = {1,1,1,1,2,2,2,2,3,3,3,3};
-        RemoveDuplicates removeDuplicates = new RemoveDuplicates();
+        NO26_RemoveDuplicates removeDuplicates = new NO26_RemoveDuplicates();
         removeDuplicates.removeDuplicates(nums);
         System.out.println(nums);
     }

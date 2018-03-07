@@ -1,9 +1,7 @@
-import java.util.Arrays;
-
 /**
  * Created by tangbin1 on 2017/7/5.
  */
-public class RemoveElement {
+public class NO27_RemoveElement {
     public int removeElement(int[] nums, int val){
         if(nums==null||nums.length==0)
             return 0;
@@ -21,7 +19,7 @@ public class RemoveElement {
 
 
     public static void main(String[] args){
-        RemoveElement removeElement = new RemoveElement();
+        NO27_RemoveElement removeElement = new NO27_RemoveElement();
         int[] nums={3,2,2,3};
         int length = removeElement.removeElement(nums,3);
         System.out.println(length);

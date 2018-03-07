@@ -1,11 +1,9 @@
-import java.util.List;
-
 /**
  * @author TangBin
  * @version V1.0
  * @date 04/07/2017 10:04 PM
  */
-public class ReverseKGroup {
+public class NO25_ReverseKGroup {
     public ListNode reverseKGroup(ListNode head, int k) {
         ListNode curr = head;
         int count=0;
@@ -27,7 +25,7 @@ public class ReverseKGroup {
     }
 
     public static void main(String... args){
-        ReverseKGroup reverseKGroup = new ReverseKGroup();
+        NO25_ReverseKGroup reverseKGroup = new NO25_ReverseKGroup();
         ListNode l1 = new ListNode(1);
         ListNode l2 = new ListNode(2);
         l1.next = l2;

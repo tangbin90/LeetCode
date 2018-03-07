@@ -8,7 +8,7 @@ Input is guaranteed to be within the range from 1 to 3999.
 
 Subscribe to see which companies asked this question.
  */
-public class RomanToInteger {
+public class NO13_RomanToInteger {
     public final String[] M={"","M","MM","MMM"};
     public final String[] C={"", "C","CC","CCC","CD","D","DC","DCC","DCCC","CM"};
     public final String X[] = {"", "X", "XX", "XXX", "XL", "L", "LX", "LXX", "LXXX", "XC"};
@@ -40,6 +40,6 @@ public class RomanToInteger {
     }
 
     public static void main(String[] args){
-        System.out.println(RomanToInteger.romanToInt("MCMXCIV"));
+        System.out.println(NO13_RomanToInteger.romanToInt("MCMXCIV"));
     }
 }

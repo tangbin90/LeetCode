@@ -4,7 +4,7 @@ import java.util.List;
 /**
  * Created by tangbin1 on 2017/7/3.
  */
-public class GenerateParentheses {
+public class NO22_GenerateParentheses {
     public List<String> generateParentheses(int n) {
         ArrayList<String> arrayList = new ArrayList<>();
         generateParentheses(arrayList,"",0, 0, n);
@@ -28,7 +28,7 @@ public class GenerateParentheses {
     }
 
     public static void main(String[] args){
-        GenerateParentheses gen = new GenerateParentheses();
+        NO22_GenerateParentheses gen = new NO22_GenerateParentheses();
         System.out.println(gen.generateParentheses(2));
     }
 }

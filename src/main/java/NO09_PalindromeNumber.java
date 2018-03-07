@@ -1,21 +1,17 @@
-import static java.lang.Math.abs;
-
 /**
- * @Package ${PACKAGE_NAME}
  * @author TangBin
- * @date 21/03/2017 1:57 PM
+ * @date 22/03/2017 3:45 PM
  * @version V1.0
  */
-public class ReverseInteger {
+public class NO09_PalindromeNumber {
+    public boolean isPalindrome(int x) {
+        return x >= 0 && x == reversenum(x);
+    }
+
     @SuppressWarnings("Duplicates")
-    private int reverse(int x) {
+    private int reversenum(int x) {
         int pos=0;
 
-        Boolean isPositive = true;
-        if(x<0) {
-            isPositive = false;
-            x = abs(x);
-        }
         int temp = x;
         while(temp>0){
             temp=temp/10;
@@ -30,14 +26,11 @@ public class ReverseInteger {
             reverse=reverse*10+x%10;
             x=x/10;
         }
-        if(!isPositive)
-            reverse*=-1;
         return reverse;
     }
 
-
     public static void main(String[] args){
-        ReverseInteger ri = new ReverseInteger();
-        System.out.println(ri.reverse(1534236469));
+        NO09_PalindromeNumber pn = new NO09_PalindromeNumber();
+        System.out.println(pn.isPalindrome(121));
     }
 }

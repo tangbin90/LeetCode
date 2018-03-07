@@ -1,7 +1,7 @@
 /**
  * Created by tangbin1 on 2017/7/3.
  */
-public class SwapPairs {
+public class NO24_SwapPairs {
     public ListNode swapPairs(ListNode head) {
         if(head==null)
             return null;
@@ -25,7 +25,7 @@ public class SwapPairs {
     }
 
     public static void main(String[] args){
-        SwapPairs swapPairs = new SwapPairs();
+        NO24_SwapPairs swapPairs = new NO24_SwapPairs();
         ListNode ln = new ListNode(1);
         ListNode ln2 = new ListNode(2);
         ListNode ln3  = new ListNode(3);

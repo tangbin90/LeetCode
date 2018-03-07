@@ -1,7 +1,7 @@
 /**
  * Created by tangbin1 on 2017/7/10.
  */
-public class UniquePaths {
+public class NO62_UniquePaths {
     public int uniquePaths(int m, int n){
         return uniquePaths(m, n, 1,1);
     }
@@ -31,6 +31,6 @@ public class UniquePaths {
         return map[m-1][n-1];
     }
     public static void main(String... args) {
-        System.out.println(new UniquePaths().uniquePaths(23,12));
+        System.out.println(new NO62_UniquePaths().uniquePaths(23,12));
     }
 }

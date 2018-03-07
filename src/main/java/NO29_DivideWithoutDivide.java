@@ -1,7 +1,7 @@
 /**
  * Created by tangbin1 on 2017/7/5.
  */
-public class DivideWithoutDivide {
+public class NO29_DivideWithoutDivide {
     public int divide(int dividend, int divisor) {
         boolean isNegative=(dividend<0)^(divisor<0);
         if(divisor==0||(dividend == Integer.MIN_VALUE && divisor == -1))
@@ -30,7 +30,7 @@ public class DivideWithoutDivide {
     }
 
     public static void main(String[] args){
-        DivideWithoutDivide divideWithoutDivide = new DivideWithoutDivide();
+        NO29_DivideWithoutDivide divideWithoutDivide = new NO29_DivideWithoutDivide();
         System.out.println(divideWithoutDivide.divide(-1010369383
                 ,-2147483648));
     }

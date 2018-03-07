@@ -3,7 +3,7 @@
  * @version V1.0
  * @date 10/04/2017 10:48 AM
  */
-public class LongestCommonPrefix {
+public class NO14_LongestCommonPrefix {
     public static String longestCommonPrefix(String[] strs) {
 
         if(strs.length==0)
@@ -26,6 +26,6 @@ public class LongestCommonPrefix {
     }
 
     public static void main(String[] args){
-        System.out.println(LongestCommonPrefix.longestCommonPrefix(new String[]{"abab","aba",""}));
+        System.out.println(NO14_LongestCommonPrefix.longestCommonPrefix(new String[]{"abab","aba",""}));
     }
 }

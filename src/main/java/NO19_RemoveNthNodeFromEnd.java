@@ -1,7 +1,7 @@
 /**
  * Created by tangbin1 on 2017/6/30.
  */
-public class RemoveNthNodeFromEnd {
+public class NO19_RemoveNthNodeFromEnd {
     public class ListNode {
         int val;
         ListNode next;

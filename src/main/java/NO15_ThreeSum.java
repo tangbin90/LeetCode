@@ -9,7 +9,7 @@ import java.util.List;
  * @date 11/04/2017 9:47 AM
  */
 
-public class ThreeSum {
+public class NO15_ThreeSum {
     public static List<List<Integer>> threeSum(int[] nums) {
         List<List<Integer>> res = new ArrayList<List<Integer>>();
         Arrays.sort(nums);
