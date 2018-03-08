@@ -26,43 +26,63 @@ isMatch("aaa","aa") → false
 isMatch("aa", "*") → true〉
  */
 public class NO44_WildcardMatching {
+    public boolean isMatchDP(String s,String p){
+        char[] sChars = s.toCharArray();
+        char[] pChars = p.toCharArray();
+        boolean[][] mem = new boolean[sChars.length+1][pChars.length+1];
+        mem[0][0] = true;
+
+        for(int j=1;j<pChars.length+1;j++){
+            if(pChars[j-1]=='*')
+                mem[0][j] = true;
+            else
+                break;
+        }
+
+        for(int i=1;i<sChars.length+1;i++){
+            for(int j=1;j<pChars.length+1;j++){
+                if(pChars[j-1]=='*')
+                    mem[i][j] = mem[i][j-1]||mem[i-1][j];
+                else if(pChars[j-1]==sChars[i-1]||pChars[j-1]=='?')
+                    mem[i][j] = mem[i-1][j-1];
+                else
+                    mem[i][j]=false;
+            }
+        }
+
+        return mem[sChars.length][pChars.length];
+    }
     public boolean isMatch(String s, String p) {
         char[] sChars = s.toCharArray();
         char[] pChars = p.toCharArray();
-        boolean[][] hasCal = new boolean[s.length()+1][p.length()+1];
-        boolean[][] mem =  new boolean[s.length()+1][p.length()+1];
-        hasCal[0][0]=true;
-        return isMatch(sChars, 0, pChars,0,mem,hasCal);
+        return isMatch(sChars, 0, pChars,0);
     }
 
-    public void isMatch(char[] s, int sIter, char[] p, int pIter, boolean[][] mem,boolean[][] hasCal){
-        hasCal[sIter][pIter]=true;
+    public boolean isMatch(char[] s, int sIter, char[] p, int pIter){
+        if(sIter==s.length&& pIter==p.length)
+            return true;
+        if(pIter==p.length)
+            return false;
         if(p[pIter]=='*'){
             //当做空字符串处理
             boolean starAsNull=  isMatch(s,sIter,p,pIter+1);
             //当做单字符处理
             boolean startAsSingle = false;
             if(s.length-sIter>=pIter-p.length)
-                if(hasCal[sIter+1][pIter])
-
-                    else
-                    startAsSingle = isMatch(s,sIter+1,p,pIter);
-            mem[sIter][pIter] = starAsNull||startAsSingle;
+                startAsSingle = isMatch(s,sIter+1,p,pIter);
+            return starAsNull||startAsSingle;
         }
         if(sIter<s.length&&pIter<p.length) {
             if (s[sIter] == p[pIter] || p[pIter] == '?'){
-                if(hasCal[sIter+1][pIter+1])
-                    mem[sIter][pIter]=mem[sIter+1][pIter+1];
-                else
-                    isMatch(s, sIter + 1, p, pIter + 1,mem,hasCal);
             }
+                return isMatch(s, sIter + 1, p, pIter + 1);
         }
-        mem[sIter][pIter]=false;
+        return false;
     }
 
 
     public static void main(String[] args) {
         NO44_WildcardMatching wildcardMatching = new NO44_WildcardMatching();
-        System.out.println(wildcardMatching.isMatch("abbabbbaabaaabbbbbabbabbabbbabbaaabbbababbabaaabbab","*aabcb***aa**a******aa*"));
+        System.out.println(wildcardMatching.isMatchDP("aa","aa"));
     }
 }
