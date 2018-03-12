@@ -25,12 +25,16 @@ public class NO25_ReverseKGroup {
     }
 
     public static void main(String... args){
-        NO25_ReverseKGroup reverseKGroup = new NO25_ReverseKGroup();
-        ListNode l1 = new ListNode(1);
-        ListNode l2 = new ListNode(2);
-        l1.next = l2;
-        ListNode result = reverseKGroup.reverseKGroup(l1, 2);
-
-        System.out.print(result.val);
+//        NO25_ReverseKGroup reverseKGroup = new NO25_ReverseKGroup();
+//        ListNode l1 = new ListNode(1);
+//        ListNode l2 = new ListNode(2);
+//        l1.next = l2;
+//        ListNode result = reverseKGroup.reverseKGroup(l1, 2);
+//
+//        System.out.print(result.val);
+        int count =10;
+        while(count--!=0){
+            System.out.println(count);
+        }
     }
 }
