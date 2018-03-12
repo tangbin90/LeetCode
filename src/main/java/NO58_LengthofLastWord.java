@@ -27,16 +27,18 @@ public class NO58_LengthofLastWord {
     public int lengthOfLastWord(String s) {
         if(s==null||s.length()==0)
             return 0;
-        int end = s.length();
-        int begin = 1;
+        if(s.length()==1&&s.charAt(s.length()-1)==' ')
+            return 0;
+        int end = -1;
+        int begin = -1;
         char[] chars = s.toCharArray();
         for(int i=s.length()-1;i>=0;i--){
             if(chars[i]!=' '){
-                end = i;
+                end=i;
                 break;
             }
         }
-        for(int i=end-1;i>=0;i--) {
+        for(int i=end;i>=0;i--) {
             if (chars[i] == ' ' ) {
                 begin = i;
                 break;
@@ -46,6 +48,7 @@ public class NO58_LengthofLastWord {
     }
 
     public static void main(String[] args) {
-        NO58_LengthofLastWord lengthofLastWord = new NO58_LengthofLastWord()
+        NO58_LengthofLastWord lengthofLastWord = new NO58_LengthofLastWord();
+        System.out.println(lengthofLastWord.lengthOfLastWord("a"));
     }
 }
