@@ -38,24 +38,26 @@ public class NO68_TextJustification {
                 length += words[i].length();
                 wordsCount++;
             } else {
-                int avg = 0;
-                int rest = 0;
+                int avg;
+                StringBuilder sb = new StringBuilder();
+
                 if(wordsCount>1) {
                     avg = (maxWidth - length) / (wordsCount - 1);
-                    rest = (maxWidth - length) % (wordsCount - 1);
-                    StringBuilder sb = new StringBuilder();
+                    int rest = (maxWidth - length) % (wordsCount - 1);
                     sb.append(words[start]);
-
                     for (int j = start+1; j < start+wordsCount; j++) {
                         for (int k = 0; k < avg; k++) {
                             sb.append(" ");
                         }
                         sb.append(rest <= 0 ? "" : " ");
                         rest--;
-                        sb.append(words[i]);
+                        sb.append(words[j]);
                     }
+                }else{
+                    sb.append(words[start]);
+                    for(int k=words[start].length();k<maxWidth;k++)
+                        sb.append(" ");
                 }
-
                 strs.add(sb.toString());
                 length = words[i].length();
                 wordsCount = 1;
@@ -84,9 +86,9 @@ public class NO68_TextJustification {
     }
 
     public static void main(String[] args){
-        String[] words = {"Listen","to","many,","speak","to   a","few.  "};
+        String[] words = {"a","b","c","d","e"};
         NO68_TextJustification textJustification = new NO68_TextJustification();
-        List<String> ls = textJustification.fullJustify(words,6);
+        List<String> ls = textJustification.fullJustify(words,3);
 
         for(String str : ls){
             System.out.println(str);
