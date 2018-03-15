@@ -21,6 +21,33 @@ c) Replace a character〉
  */
 public class NO72_EditDistance {
     public int minDistance(String word1, String word2) {
-        return 0;
+        int l1 = word1.length();
+        int l2 = word2.length();
+
+        int[][] mem = new int[l1+1][l2+1];
+
+        for(int i=0;i<=l1;i++){
+            mem[i][0] = i;
+        }
+
+        for(int j=0;j<=l2;j++){
+            mem[0][j] = j;
+        }
+
+        for(int i=1;i<=l1;i++){
+            for(int j=1;j<=l2;j++){
+                if(word1.charAt(i-1)==word2.charAt(j-1))
+                    mem[i][j] = mem[i-1][j-1];
+                else
+                    mem[i][j] = Math.min(Math.min(mem[i-1][j],mem[i][j-1]),mem[i-1][j-1])+1;
+            }
+        }
+        return mem[l1][l2];
     }
+
+    public static void main(String[] args) {
+        NO72_EditDistance editDistance = new NO72_EditDistance();
+        editDistance.minDistance("a","b");
+    }
+
 }
