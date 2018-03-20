@@ -19,24 +19,29 @@ Given 1->1->1->2->3, return 2->3.〉
  */
 public class NO82_RemoveDuplicatesFromSoredListII {
     public ListNode deleteDuplicates(ListNode head) {
-        ListNode node = head.next;
-        ListNode preDiffNode = null;
-        ListNode preNode = null;
-        int temp = head.val;
+        if(head==null) return head;
+        ListNode  fakeHead= new ListNode(0);
+        fakeHead.next = head;
+        ListNode  preNode = fakeHead;
+        ListNode node = head;
 
         while(node!=null){
-            if(node.val==temp){
-                if(preDiffNode==null) {
-                    head = node.next;
-                }else
-                    preDiffNode.next = node.next;
-            }else{
-                preDiffNode = preNode;
-                temp = node.val;
+            while(node.next!=null&&node.val==node.next.val){
+                node = node.next;
             }
+
+            if(preNode.next==node) {
+                preNode = node;
+            }else {
+                preNode.next = node.next;
+            }
+
             node = node.next;
-            preNode = node;
         }
-        return head;
+        return fakeHead.next;
+    }
+
+
+    public static void main(String[] args) {
     }
 }
