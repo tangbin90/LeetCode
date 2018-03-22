@@ -1,3 +1,5 @@
+import entity.ListNode;
+
 /**
  * @author TangBin
  * @version V1.0

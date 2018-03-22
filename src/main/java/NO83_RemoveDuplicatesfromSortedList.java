@@ -1,3 +1,5 @@
+import entity.ListNode;
+
 /**
  * @author TangBin
  * @version V1.0
@@ -13,7 +15,7 @@ Given 1->1->2->3->3, return 1->2->3.
 public class NO83_RemoveDuplicatesfromSortedList {
     public ListNode deleteDuplicates(ListNode head) {
         if(head==null) return head;
-        ListNode  fakeHead= new ListNode(0);
+        ListNode fakeHead= new ListNode(0);
         fakeHead.next = head;
         ListNode  preNode = fakeHead;
         ListNode node = head;

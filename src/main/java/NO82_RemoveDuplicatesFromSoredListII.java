@@ -6,6 +6,8 @@
  * Description:
  */
 
+import entity.ListNode;
+
 /**
  * @author: TangBin 17082720 
  * @Email: 17082720@cnsuning.com

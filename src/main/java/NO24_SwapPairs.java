@@ -1,3 +1,5 @@
+import entity.ListNode;
+
 /**
  * Created by tangbin1 on 2017/7/3.
  */
