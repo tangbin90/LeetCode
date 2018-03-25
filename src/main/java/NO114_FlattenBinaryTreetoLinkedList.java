@@ -31,7 +31,7 @@ click to show hints.
 Hints:
 If you notice carefully in the flattened tree, each node's right child points to the next node of a pre-order traversal.
  */
-public class NO113_FlattenBinaryTreetoLinkedList {
+public class NO114_FlattenBinaryTreetoLinkedList {
     private TreeNode prevNode = null;
     public void flatten(TreeNode root) {
         if(root==null)
