@@ -21,7 +21,6 @@ public class NO126_WordLadderII {
         List<List<String>> res = new ArrayList<>();
         HashMap<String, ArrayList<String>> nodeNeighbors = new HashMap<>();
         HashMap<String, Integer> distance = new HashMap<>();
-        dictionary.add(beginWord);
         ArrayList<String> solution = new ArrayList<>();
         dictionary.add(beginWord);
         distance.put(beginWord,0);

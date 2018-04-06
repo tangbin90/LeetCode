@@ -35,8 +35,4 @@ public class NO125_ValidPalindrome {
 
         return true;
     }
-
-
-
-
 }
