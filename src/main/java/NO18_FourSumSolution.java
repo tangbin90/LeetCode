@@ -1,4 +1,3 @@
-import java.lang.reflect.Array;
 import java.util.*;
 
 /**
@@ -10,13 +9,13 @@ public class NO18_FourSumSolution {
         Set<List<Integer>> fourSumList = new LinkedHashSet<>();
         for(int i=0;i<nums.length;i++){
             Set<List<Integer>> threeSumResult = threeSum(nums,i+1,nums.length,target-nums[i]);
-            for(List li : threeSumResult){
+            for(List<Integer> li : threeSumResult){
                 li.add(nums[i]);
                 fourSumList.add(li);
             }
         }
         List<List<Integer>> result = new LinkedList<>();
-        for(List li: fourSumList)
+        for(List<Integer> li: fourSumList)
             result.add(li);
         return result;
     }

@@ -6,8 +6,6 @@
  * Description:
  */
 
-import javafx.beans.property.ReadOnlyBooleanWrapper;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,7 +22,6 @@ public class NO120_Triangle {
         int[] calculatedNum = new int[rowNum];
         for(int i=0;i<rowNum;i++)
             calculatedNum[i]=0;
-        boolean[] calculated = new boolean[rowNum];
         return minimumTotalHelper(0,0,triangle);
     }
 

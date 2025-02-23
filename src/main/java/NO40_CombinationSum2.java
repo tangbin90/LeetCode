@@ -33,7 +33,7 @@ public class NO40_CombinationSum2 {
         }else if(sum>target){
             return;
         }else{
-            result.add((List)path.clone());
+            result.add(new ArrayList<>(path));
         }
     }
 

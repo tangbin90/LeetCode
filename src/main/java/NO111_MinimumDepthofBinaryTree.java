@@ -1,9 +1,5 @@
 import entity.TreeNode;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.Queue;
-
 /**
  * @author TangBin
  * @version V1.0

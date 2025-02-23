@@ -1,7 +1,5 @@
 import entity.TreeNode;
 
-import java.util.Stack;
-
 /**
  * @author TangBin
  * @version V1.0

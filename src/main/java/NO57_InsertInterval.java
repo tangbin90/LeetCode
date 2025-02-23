@@ -11,7 +11,6 @@ import java.util.List;
 public class NO57_InsertInterval {
     public List<Interval> insert(List<Interval> intervals, Interval newInterval) {
         int i = 0;
-        int end = intervals.size()-1;
         List<Interval> result = new ArrayList<>();
 
         while(i<intervals.size()&&intervals.get(i).end<newInterval.start){

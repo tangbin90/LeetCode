@@ -1,5 +1,3 @@
-import java.lang.*;
-
 public class NO05_LongestPalindromicSubstring {
 	private int start;
 	private int maxLength;
@@ -18,18 +16,18 @@ public class NO05_LongestPalindromicSubstring {
 	}
 
 	private void extendStr(int low, int high){
-		int length;
+		int length = 0;
 		while(low>=0&&high<string.length()){
 			if(string.charAt(low)==string.charAt(high)){
 				length=high-low+1;
+				if(maxLength<length){
+					maxLength=length;
+					start=low;
+				}
+				low--;
+				high++;
 			}else
 				break;
-			if(maxLength<length){
-				maxLength=length;
-				start=low;
-			}
-			low--;
-			high++;
 		}
 	}
 

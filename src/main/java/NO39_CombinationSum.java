@@ -43,7 +43,7 @@ public class NO39_CombinationSum {
         }else if(sum>target){
             return;
         }else{
-            result.add((List)path.clone());
+            result.add(new ArrayList<>(path));
         }
     }
 

@@ -11,8 +11,6 @@ public class NO64_MinimumPathSum {
         int colNum = grid[0].length;
 
         int[][] result = new int[rowNum][colNum];
-        int row = 0;
-        int col = 0;
         result[rowNum-1][colNum-1]=grid[rowNum-1][colNum-1];
         for(int i=rowNum-2;i>=0;i--){
             result[i][colNum-1]=grid[i][colNum-1]+result[i+1][colNum-1];

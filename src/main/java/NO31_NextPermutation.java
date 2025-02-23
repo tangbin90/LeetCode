@@ -7,7 +7,6 @@ public class NO31_NextPermutation {
             return;
         int length = nums.length;
         int i=length-2;
-        int num = nums[0];
 
         while (i >= 0 && nums[i + 1] <= nums[i]) {
             i--;

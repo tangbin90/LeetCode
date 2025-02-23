@@ -62,7 +62,7 @@ public class NO46_Permutations {
         int[] nums = {1,2,3,4};
         NO46_Permutations permutations = new NO46_Permutations();
         List<List<Integer>> res = permutations.permute(nums);
-        for(List aa : res){
+        for(List<Integer> aa : res){
             System.out.println(aa.toString());
         }
     }

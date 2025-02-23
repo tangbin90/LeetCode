@@ -87,7 +87,7 @@ public class NO47_PermutationsII {
         int[] nums = {1,1,3};
         NO47_PermutationsII permutations = new NO47_PermutationsII();
         List<List<Integer>> res = permutations.permuteUnique(nums);
-        for(List aa : res){
+        for(List<Integer> aa : res){
             System.out.println(aa.toString());
         }
     }

@@ -15,7 +15,6 @@
  */
 public class NO36_ValidSudoku {
     public boolean isValidSudoku(char[][] board) {
-        int[] count = new int[9];
         int rowNum = board.length;
         int colNum = board[0].length;
         if(rowNum!=9||colNum!=9)

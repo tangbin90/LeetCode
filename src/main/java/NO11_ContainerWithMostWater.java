@@ -1,5 +1,3 @@
-import static java.lang.Math.min;
-
 /**
  * @author TangBin
  * @version V1.0
@@ -7,7 +5,6 @@ import static java.lang.Math.min;
  */
 public class NO11_ContainerWithMostWater {
     public int maxArea(int[] height) {
-        int length = height.length;
         int begin = 0;
         int end = height.length-1;
         int maxAera=0;
