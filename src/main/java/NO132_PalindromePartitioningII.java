@@ -41,19 +41,19 @@ public class NO132_PalindromePartitioningII {
         palindromePartitioningII.minCut("aabb");
     }
 
-    private boolean isPalindrome(String str){
-        if(str.length()==1)
-            return true;
-        int start = 0;
-        int end = str.length()-1;
+    // private boolean isPalindrome(String str){
+    //     if(str.length()==1)
+    //         return true;
+    //     int start = 0;
+    //     int end = str.length()-1;
 
-        while(start<=end){
-            if(str.charAt(start)==str.charAt(end)){
-                start++;
-                end--;
-            }else
-                return false;
-        }
-        return true;
-    }
+    //     while(start<=end){
+    //         if(str.charAt(start)==str.charAt(end)){
+    //             start++;
+    //             end--;
+    //         }else
+    //             return false;
+    //     }
+    //     return true;
+    // }
 }

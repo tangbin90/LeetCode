@@ -47,6 +47,7 @@ public class NO23_MergeKLists {
         ListNode[] lists = new ListNode[1];
         lists[0] = l2;
         NO23_MergeKLists mk = new NO23_MergeKLists();
-        // ListNode ln = mk.mergeKLists(lists);
+        ListNode ln = mk.mergeKLists(lists);
+        System.out.println(ln.val);
     }
 }
