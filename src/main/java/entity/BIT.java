@@ -20,7 +20,6 @@ public class BIT {
 
     }
 
-    private BIT(){}
 
     private void establishBIT() {
         for (int i = 1; i < orgin.length; i++) {

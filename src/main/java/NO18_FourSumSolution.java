@@ -23,7 +23,7 @@ public class NO18_FourSumSolution {
 
     public static Set<List<Integer>> threeSum(int[] nums, int start, int end, int target){
         Arrays.sort(nums);
-        Set<List<Integer>> result = new LinkedHashSet<List<Integer>>();
+        Set<List<Integer>> result = new LinkedHashSet<>();
         for(int i=start;i<end;i++){
             int head = i+1;
             int tail = end-1;
@@ -34,7 +34,7 @@ public class NO18_FourSumSolution {
                 }else if(nums[head]+nums[tail]>targetNum){
                     tail--;
                 }else{
-                    List<Integer> intPair = new ArrayList<Integer>();
+                    List<Integer> intPair = new ArrayList<>();
                     intPair.add(nums[i]);
                     intPair.add(nums[head]);
                     intPair.add(nums[tail]);
@@ -47,13 +47,13 @@ public class NO18_FourSumSolution {
     }
 
     public static List<List<Integer>> twoSum(int[] nums, int target){
-        HashMap<Integer, Integer> numMap = new HashMap<Integer, Integer>();
-        List<List<Integer>> listResult = new ArrayList<List<Integer>>() ;
+        HashMap<Integer, Integer> numMap = new HashMap<>();
+        List<List<Integer>> listResult = new ArrayList<>() ;
 
         for(int i=0;i<nums.length;i++){
             numMap.put(nums[i], i);
             if(numMap.containsKey(target-nums[i])&&numMap.get(target-nums[i])<i){
-                List<Integer> intlist = new ArrayList<Integer>();
+                List<Integer> intlist = new ArrayList<>();
                 intlist.add(nums[i]);
                 intlist.add(target-nums[i]);
                 listResult.add(intlist);

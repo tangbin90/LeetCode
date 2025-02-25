@@ -35,13 +35,13 @@ public class NO46_Permutations {
         if(nums==null||nums.length==0)
             return res;
 
-        permute(nums,new LinkedList<>(),0,res);
+        permute(nums,new LinkedList<Integer>(),0,res);
         return res;
     }
 
     private void permute(int[] nums, List<Integer> numPer,int start, List<List<Integer>> res){
         if(start==nums.length){
-            res.add(new ArrayList<Integer>(numPer));
+            res.add(new ArrayList<>(numPer));
         }
         for(int i=start;i<nums.length;i++){
             swap(nums,start, i);

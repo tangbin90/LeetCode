@@ -58,6 +58,6 @@ public class NO37_SudokuSolver {
     }
 
     public static void main(String[] args){
-        NO37_SudokuSolver sudokuSolver = new NO37_SudokuSolver();
+        // NO37_SudokuSolver sudokuSolver = new NO37_SudokuSolver();
     }
 }
