@@ -32,7 +32,7 @@ public class NO90_SubsetsII {
         Arrays.sort(nums);
         int len = nums.length;
         List<List<Integer>> lli = new ArrayList<>();
-        lli.add(new LinkedList<>());
+        lli.add(new LinkedList<Integer>());
         List<Integer> dup = new LinkedList<>();
         List<List<Integer>> lliTemp = new ArrayList<>();
         int duplicate = Integer.MAX_VALUE;

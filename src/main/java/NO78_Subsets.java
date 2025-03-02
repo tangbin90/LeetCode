@@ -10,7 +10,6 @@ import java.util.List;
 public class NO78_Subsets {
     public List<List<Integer>> subsets(int[] nums) {
         List<List<Integer>> ans= new LinkedList<>();
-        ans.add(new ArrayList<>());
         for(int i=0;i<nums.length;i++){
             List<List<Integer>> temp = new LinkedList<>();
             for(List<Integer> li :ans){
