@@ -59,13 +59,15 @@ public class LFUCache {
         keyToFreq.put(key, tmp+1);
         Set<Integer> keys = freqToKeys.get(tmp);
         keys.remove(key);
-        if(freqToKeys.containsKey(tmp+1)) {
-           keys = freqToKeys.get(key);
-           keys.add(key);
-        } else {
-            Set<Integer> tkeys = new HashSet<>();
-            keys.add(key);
-            freqToKeys.put(tmp+1, tkeys);
+
+        freqToKeys.putIfAbsent(tmp+1, new LinkedHashSet<>());
+        freqToKeys.get(tmp + 1).add(key);
+
+        if(freqToKeys.get(tmp).isEmpty()){
+            freqToKeys.remove(tmp);
+
+            if(tmp == this.minFreq)
+                this.minFreq++;
         }
 
 
