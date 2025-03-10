@@ -1,18 +1,24 @@
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 public class MonotonicQueue {
+    private LinkedList<Integer> q = new LinkedList<>();
 
     public void push(int n){
-
+        while(!q.isEmpty() && q.getLast() < n) {
+            q.pollLast();
+        }
+        q.addLast(n);
     }
 
     public int max(){
-
+        return q.getFirst();
     }
 
     public void pop(int n){
-
+        if(n==q.getFirst())
+            q.pollFirst();
     }
 
     public static List<Integer> maxSlidingWindow(int[] nums, int k) {
