@@ -145,12 +145,188 @@ public class Chapter4 {
         }
     }
 
+    public static List<String> rslt = new LinkedList<>();
+    public static List<String> generateParenthesis(int n){
+        backTrackParenthesis(n, new StringBuilder());
+        return rslt;
+    }
 
-    public static void main(String[] args) {
-        char[][] nums={{'x','o','x'},{'o','x','x'},{'x','x','o'}};
-        printSudoku(nums);
+    public static void backTrackParenthesis(int n, StringBuilder track){
+        if(track.length()== 2*n) {
+            rslt.add(track.toString());
+            return;
+        }
+        String[] strs = {"(", ")"};
+        for(String str : strs){
+            track.append(str);
+            backTrackParenthesis(n, track);
+            track.delete(track.length()-1, track.length());
+        }
+    }
+
+    public static void backTrackParenthesis2(int left, int right,StringBuilder track){
+        if(left < 0 || right < 0)
+            return;
+
+        if(left == 0 && right ==0) {
+            rslt.add(track.toString());
+            return;
+        }
+
+        if(left > right)
+            return;
+
+
+        track.append("(");
+        backTrackParenthesis2(left - 1, right, track);
+        track.delete(track.length() - 1, track.length());
+
+
+        track.append(")");
+        backTrackParenthesis2(left, right-1, track);
+        track.delete(track.length() - 1, track.length());
+
+
     }
 
 
+
+    int[][] neighbor = {{1,3},{0,4,2},{1,5},{0,4},{3,1,5}};
+
+    int slidingPuzzle(int[][] board){
+        int m=2, n=3;
+        StringBuilder track = new StringBuilder();
+        String target = "123450";
+        for(int i=0; i<m; i++){
+            for(int j=0; j<n; j++){
+                track.append(board[i][j]);
+            }
+        }
+
+        Queue<String> q = new LinkedList<>();
+        int step = 0;
+        q.add(track.toString());
+        Set<String> visited = new HashSet<>();
+        visited.add(track.toString());
+        while(!q.isEmpty()){
+            String tmp = q.poll();
+            if(tmp.equals(target))
+                return step;
+
+            int idx = 0;
+            for(; tmp.charAt(idx)!='0'; idx++);
+
+            int[] neibour =neighbor[idx];
+            for(int i=0; i< neibour.length; i++){
+                char[] chs = tmp.toCharArray();
+                chs[idx]=chs[neibour[i]];
+                chs[neibour[i]] = '0';
+                String str =new String(chs);
+                if(!visited.contains(str)) {
+                    q.add(str);
+                    visited.add(str);
+                }
+            }
+            step++;
+        }
+        return -1;
+
+    }
+//4.5 two sum
+    public static int[] twoSum(int[] nums, int target){
+        HashMap<Integer, Integer> store = new HashMap<>();
+        int[] result = {-1, -1};
+        for(int i=0; i< nums.length; i++){
+            if(store.containsKey(target- nums[i])) {
+                result[0] = i;
+                result[1] = store.get(target - nums[i]);
+                return result;
+            }
+            else
+                store.put(target-nums[i], i);
+        }
+        return result;
+    }
+
+
+    //4.6 nSum
+    public static int[] twoSum2(int[] nums, int target){
+        Arrays.sort(nums);
+        int lo = 0;
+        int hi = nums.length - 1;
+
+        while(lo < hi){
+            int sum = nums[lo] + nums[hi];
+
+            if(sum < target){
+                lo++;
+            } else if(sum > target){
+                hi--;
+            }else if(sum == target){
+                return new int[]{nums[lo], nums[hi]};
+            }
+        }
+        return new int[]{};
+    }
+
+
+    public static boolean isDigit(char c){
+        if(c >= '0' && c <= '9')
+            return true;
+
+        return false;
+    }
+    public static int calculate(String s, int start, int end){
+        Stack<Integer> stack = new Stack<>();
+        int num =0;
+        int sign ='+';
+        for(int i=start; i < end; i++){
+            char c = s.charAt(i);
+            if(isDigit(c)){
+                num = 10 * num + (c -'0');
+            }
+            if(c=='(') {
+                for(int j = end-1; j>start; j--){
+                    if(s.charAt(j)==')') {
+                        num = calculate(s, i+1, j+1);
+                        stack.push(num);
+                        i = j;
+                        break;
+                    }
+                }
+                continue;
+            }
+
+            if((!isDigit(c)&& c != ' ') || i == s.length()-1){
+                switch (sign){
+                    case '+': stack.push(num); break;
+                    case '-': stack.push(-1*num); break;
+                    case '*':
+                        int tmp = stack.pop();
+                        stack.push(tmp * num);
+                        break;
+                    case '/':
+                        int tmp2 = stack.pop();
+                        stack.push(tmp2/num);
+                        break;
+                }
+                sign = c;
+                num = 0;
+            }
+        }
+
+        num = 0;
+        while(!stack.isEmpty()){
+            num+=stack.pop();
+        }
+
+        return num;
+    }
+
+    
+    public static void main(String[] args) {
+        String str = "1231+(123-23)*100";
+        System.out.println(calculate(str, 0, str.length()));
+    }
 
 }
