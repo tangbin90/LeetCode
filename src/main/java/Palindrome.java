@@ -1,6 +1,5 @@
 import entity.ListNode;
 
-import static com.sun.org.apache.xerces.internal.impl.xs.opti.SchemaDOM.traverse;
 
 public class Palindrome {
     String palindrome(String str, int l, int r){
