@@ -1,3 +1,4 @@
+import leetcodesolutions.NO42_TrappingRainWater;
 import org.junit.Assert;
 import org.junit.Test;
 
