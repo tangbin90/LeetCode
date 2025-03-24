@@ -1,3 +1,6 @@
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.Stack;
 
 import java.lang.reflect.Array;
 import java.util.*;
@@ -134,6 +137,160 @@ public class Chapter5 {
             }
         }
         return false;
+    }
+
+    //dp[p] least number: num
+    //dp[n-1] = 0
+    //dp[n-2] = 1
+    //dp[n-3] min(dp[n-2]+1, num[n-3]> 2? 1)
+    public static int dp(int[] nums){
+        int n = nums.length;
+        if(n == 0)
+            return 0;
+        int[] dp = new int[nums.length];
+        dp[n-1] = 0;
+
+        for(int i=n-2; i>=0; i--){
+            int rslt = Integer.MAX_VALUE;
+            for(int j=1; j<=nums[i];j++){
+                if(i+j >= n-1)
+                    rslt = 1;
+                if(rslt > dp[i+j])
+                    rslt = dp[i+j]+1;
+            }
+            dp[i] = rslt;
+        }
+
+        return dp[0];
+    }
+
+    public static int intervalSchedule(int[][] intvs){
+        if(intvs.length == 0) return 0;
+
+        Arrays.sort(intvs, Comparator.comparingInt(o -> o[1]));
+        int end = intvs[0][1];
+        int count = 1;
+
+        for(int[] interval : intvs){
+            int start = interval[0];
+            if(start >= end){
+                count++;
+                end = interval[1];
+            }
+        }
+        return count;
+    }
+
+    void dfs(char[][] board, int i, int j){
+        int m = board.length;
+        int n = board[0].length;
+
+        if(i<0 || j<0 || i >= m || j >= n)
+            return;
+
+        if(board[i][j] != '0')
+            return;
+
+        board[i][j] = '#';
+        dfs(board, i+1, j);
+        dfs(board, i, j+1);
+        dfs(board, i-1, j);
+        dfs(board, i, j-1);
+    }
+
+    void solution(char[][] board) {
+        if(board.length ==0)
+            return;
+        int m = board.length, n = board[0].length;
+        for(int i=0; i<m; i++){
+            dfs(board, i, 0);
+            dfs(board, i, n-1);
+        }
+
+        for(int j=0; j < n; j++){
+            dfs(board, 0, j);
+            dfs(board, m-1, j);
+        }
+
+        for(int i=1; i< m-1; i++)
+            for(int j=1; j< n-1; j++){
+                if(board[i][j] == '0')
+                    board[i][j] = 'X';
+            }
+        for(int i=0; i< m; i++)
+            for(int j=0; j< n; j++){
+                if(board[i][j] == '#')
+                    board[i][j] = '0';
+            }
+    }
+
+    void solution2(char[][] board){
+        if(board.length == 0) return;
+
+        int m = board.length;
+        int n = board[0].length;
+
+        Chapter5UnionFind uf = new Chapter5UnionFind(n*m + 1);
+        int dummy = m*n;
+
+        for(int i=0; i < m; i++){
+            if(board[i][0] == '0')
+                uf.union(i*n, dummy);
+            if(board[i][n-1] == '0')
+                uf.union(i*n+n-1, dummy);
+        }
+
+        for(int j=0; j < n; j++){
+            if(board[0][j] == '0')
+                uf.union(j, dummy);
+            if(board[m-1][j] == '0')
+                uf.union((m-1)*n+j, dummy);
+        }
+
+        int[][] d = new int[][]{{1,0}, {0,1},{0,-1}, {-1,0}};
+        for(int i=1; i<m-1; i++){
+            for(int j=1; j<n-1; j++){
+                if(board[i][j]=='0'){
+                    for(int k=0; k<4; k++){
+                        int x = i+d[k][0];
+                        int y = j+d[k][1];
+                        if(board[x][y] == '0')
+                            uf.union(x*n+y, i*n+j);
+                    }
+                }
+
+            }
+
+        }
+
+        for(int i=1; i< m-1; i++){
+            for(int j=1; j<n-1; j++)
+                if(!uf.connected(dummy, i*n+j))
+                    board[i][j] ='X';
+
+        }
+    }
+
+    boolean equationsPossible(String[] equations) {
+        Chapter5UnionFind uf = new Chapter5UnionFind(26);
+        for(String eq: equations){
+            if(eq.charAt(1) =='='){
+                char x = eq.charAt(0);
+                char y = eq.charAt(3);
+                uf.union(x-'a', y-'a');
+            }
+        }
+
+        for(String eq : equations){
+            if(eq.charAt(1) =='!'){
+                char x = eq.charAt(0);
+                char y = eq.charAt(3);
+                if(uf.connected(x-'a', y-'a'))
+                    return false;
+            }
+        }
+        return true;
+
     }
 
     // water[i] = min(left_max, right_max) - height[i]
