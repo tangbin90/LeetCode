@@ -31,6 +31,34 @@ public class BalanceTree {
         if(max != null && max.val <= root.val) return false;
 
         return isValidTree(root.right, root, max) && isValidTree(root.left, min, root);
+    }
+
+    public static boolean isInTree(TreeNode node, int target) {
+        if(node == null)  return false;
+
+        if(node.val == target)
+            return true;
+
+        if(node.val > target)
+            return isInTree(node.left, target);
+
+        return isInTree(node.right, target);
 
     }
+
+    public static TreeNode insertIntoBST(TreeNode root, int val){
+
+
+    }
+
+    public static TreeNode deleteNode(TreeNode root, int key){
+
+
+    }
+
+
+
+
+
+
 }
