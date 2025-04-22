@@ -1,4 +1,4 @@
-import java.util.Arrays;
+package labula;
 
 public class maxSubArray {
     public static int maxSubArrayFunc(int[] nums){

@@ -1,3 +1,5 @@
+package labula;
+
 import java.util.HashMap;
 import java.util.Map;
 

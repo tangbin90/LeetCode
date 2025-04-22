@@ -1,3 +1,5 @@
+package labula;
+
 import java.util.Map;
 
 public class EggDrop {

@@ -1,3 +1,5 @@
+package labula;
+
 public class Backpack {
     //backpack can hold W weight
     //N things, wt[i] val[i]

@@ -1,3 +1,4 @@
+package labula;
 
 public class LongestPalindrome {
 

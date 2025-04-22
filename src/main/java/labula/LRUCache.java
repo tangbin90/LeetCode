@@ -1,3 +1,5 @@
+package labula;
+
 import entity.DoubleList;
 import entity.Node;
 

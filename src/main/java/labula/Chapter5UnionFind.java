@@ -1,3 +1,5 @@
+package labula;
+
 public class Chapter5UnionFind {
     private int count;
 

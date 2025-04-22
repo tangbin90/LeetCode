@@ -1,3 +1,5 @@
+package labula;
+
 import entity.TreeNode;
 
 public class BST {

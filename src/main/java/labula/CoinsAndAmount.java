@@ -1,3 +1,5 @@
+package labula;
+
 public class CoinsAndAmount {
     //dp[i][j] coins[i] coin value, j amount, how many ways
     public static int change(int amount, int[] coins){

@@ -1,3 +1,5 @@
+package labula;
+
 public class LongestCommonSubsequence {
     public static int longestCS(String s1, String s2){
         return dp(s1.length()-1, s2.length()-1, s1, s2);

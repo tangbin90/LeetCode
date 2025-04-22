@@ -5,10 +5,7 @@ package AirWallex;
 //[0,1,3]
 //[3,4,5]
 
-import java.util.HashSet;
-import java.util.Set;
-
-public class Interview {
+public class Interview1 {
     public static String[][] paths = new String[][]{};
 
     public static int pickStones(int[][] stones){

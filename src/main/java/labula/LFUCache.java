@@ -1,3 +1,5 @@
+package labula;
+
 import java.util.*;
 
 public class LFUCache {

@@ -1,3 +1,5 @@
+package labula;
+
 public class ArrayPartition {
 
     //dp[i][j] = x for i object when capacity is j if x is true then we can fill the pack

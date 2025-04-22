@@ -1,3 +1,5 @@
+package labula;
+
 import static java.lang.Math.max;
 
 public class Balloon {

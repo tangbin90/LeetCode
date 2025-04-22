@@ -1,3 +1,5 @@
+package labula;
+
 public class NumUtil{
 
 private static boolean isWhitespace(char c) {
