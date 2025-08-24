@@ -1,4 +1,4 @@
-package AirWallex;
+package airw;
 
 import java.util.List;
 

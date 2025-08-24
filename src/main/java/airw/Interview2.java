@@ -1,4 +1,5 @@
-package AirWallex;
+package airw;
+
 
 /**
  Question: <Design Parking Lot>
@@ -18,13 +19,6 @@ package AirWallex;
  3. Unpark car
  */
 
-
-public class Car {
-    public String type;
-
-    public String identity;
-
-    public int enterTimeStamp;
+public class Interview2 {
 
 }
-
