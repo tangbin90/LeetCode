@@ -1,3 +1,5 @@
+package leetcodesolutions;
+
 import java.util.*;
 
 public class NO282 {

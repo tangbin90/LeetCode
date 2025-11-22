@@ -1,4 +1,4 @@
-package AirWallex;
+package airwallex;
 
 // n*n matrix
 //[1,2,3]
