@@ -1,5 +1,8 @@
+<<<<<<<< HEAD:src/main/java/airwallex/Car.java
 package airwallex;
-
+========
+package airw;
+>>>>>>>> origin/master:src/main/java/airw/Car.java
 
 /**
  Question: <Design Parking Lot>
@@ -19,6 +22,13 @@ package airwallex;
  3. Unpark car
  */
 
-public class Interview2 {
+
+public class Car {
+    public String type;
+
+    public String identity;
+
+    public int enterTimeStamp;
 
 }
+

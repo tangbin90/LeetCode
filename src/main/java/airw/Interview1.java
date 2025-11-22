@@ -1,4 +1,8 @@
+<<<<<<<< HEAD:src/main/java/airwallex/Interview1.java
 package airwallex;
+========
+package airw;
+>>>>>>>> origin/master:src/main/java/airw/Interview1.java
 
 // n*n matrix
 //[1,2,3]
