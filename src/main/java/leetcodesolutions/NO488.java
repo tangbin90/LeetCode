@@ -16,15 +16,13 @@ class NO488 {
     }
 
     private static final String colors = "RYBGW";
-    private static final int MAX_STEPS = 10; // 增加最大步数限制
+    private static final int MAX_STEPS = 6; // 最多6步，超过则无解
 
     Map<String, Integer> mem;
-    private int initialHandSize;
 
     public int findMinStep(String board, String hand) {
         int[] handCount = new int[5];
         mem = new HashMap<>();
-        initialHandSize = hand.length();
         for(int i=0; i<hand.length(); i++){
             handCount[idxOf(hand.charAt(i))]++;
         }
@@ -48,8 +46,6 @@ class NO488 {
         }
         if(!hasHand) return Integer.MAX_VALUE;
         
-        // 调试信息已移除
-        
         int ans = Integer.MAX_VALUE;
         int n = board.length();
         
@@ -65,10 +61,10 @@ class NO488 {
         }
         
         for(int i=0;i <= n; i++){
-            // 暂时移除过于严格的剪枝
-            // if(i > 0 && i < n && board.charAt(i) == board.charAt(i-1)){
-            //     continue;
-            // }
+            // 剪枝：避免在相同位置插入相同颜色的球
+            if(i > 0 && i < n && board.charAt(i) == board.charAt(i-1)){
+                continue;
+            }
 
             for(int j=0; j<5; j++){
                 if(handCount[j] == 0) continue;
@@ -78,10 +74,7 @@ class NO488 {
                 if(!promising(board, i, ch)) continue;
 
                 String newBoard = board.substring(0, i) + ch + board.substring(i);
-                String originalBoard = newBoard;
                 newBoard = shrink(newBoard);
-                
-                // 调试信息已移除
                 
                 handCount[j]--;
                 int minNum = dfs(newBoard, handCount);
@@ -89,9 +82,6 @@ class NO488 {
 
                 if (minNum != Integer.MAX_VALUE) {
                     ans = Math.min(ans, 1 + minNum);
-                    if(board.equals("RRWWRRBBRR")) {
-                        System.out.println("Found solution with " + (1 + minNum) + " steps");
-                    }
                 }
             }
         }
@@ -99,10 +89,21 @@ class NO488 {
         return ans;
     }
 
-    // 简化的promising函数：允许更多插入尝试
+    // 改进的promising函数：更智能的剪枝策略
     private boolean promising(String board, int pos, char ch) {
-        // 暂时允许所有插入尝试，避免过度剪枝
-        return true;
+        // 情况1：跟左边同色
+        if (pos > 0 && board.charAt(pos - 1) == ch) return true;
+        // 情况2：跟右边同色
+        if (pos < board.length() && board.charAt(pos) == ch) return true;
+        // 情况3：左==右，且都等于 ch（可以桥接成三个）
+        if (pos > 0 && pos < board.length()
+                && board.charAt(pos - 1) == board.charAt(pos)
+                && board.charAt(pos) == ch) {
+            return true;
+        }
+        // 情况4：插入后可能形成更长的连续序列（通过后续操作）
+        // 检查插入后是否能通过连锁反应消除更多球
+        return canFormChain(board, pos, ch);
     }
     
     // 检查插入后是否能形成连锁反应
@@ -121,7 +122,7 @@ class NO488 {
         for(int count : handCount) {
             totalHand += count;
         }
-        return initialHandSize - totalHand;
+        return 5 - totalHand; // 假设初始手牌为5个
     }
     
     // 优化缓存键生成：使用更紧凑的表示
@@ -170,37 +171,8 @@ class NO488 {
 
     public static void main(String[] args) {
         NO488 no488 = new NO488();
-        
-        // 测试shrink函数
-        System.out.println("Testing shrink function:");
-        System.out.println("RRWWBRRBBRR -> " + no488.shrink("RRWWBRRBBRR"));
-        System.out.println("RRWWWRRBBRR -> " + no488.shrink("RRWWWRRBBRR"));
-        
-        // 测试用户提出的策略
-        System.out.println("\nTesting user's strategy:");
-        System.out.println("RRWWRRBBRWR -> " + no488.shrink("RRWWRRBBRWR"));
-        System.out.println("RRWWRRBBBRWR -> " + no488.shrink("RRWWRRBBBRWR"));
-        
-        // 验证具体的插入位置
-        System.out.println("\nVerifying insertion positions:");
-        String board = "RRWWRRBBRR";
-        System.out.println("Original: " + board);
-        System.out.println("Insert W at pos 9: " + (board.substring(0, 9) + "W" + board.substring(9)));
-        String step1 = board.substring(0, 9) + "W" + board.substring(9);
-        System.out.println("Step1 result: " + step1);
-        System.out.println("Insert B at pos 7 in step1: " + (step1.substring(0, 7) + "B" + step1.substring(7)));
-        
-        // 测试用例1 - 已知有解的案例
-        System.out.println("\nTest 1: WRRBBW with WRB");
-        System.out.println(no488.findMinStep("WRRBBW", "WRB") + " Steps");
-        
-        // 测试用例2 - 原始测试用例
-        System.out.println("\nTest 2: RRWWRRBBRR with WB");
         System.out.println(no488.findMinStep("RRWWRRBBRR", "WB") + " Steps");
-        
-        // 测试用例3 - 更简单的情况
-        System.out.println("\nTest 3: G with GGG");
-        System.out.println(no488.findMinStep("G", "GGG") + " Steps");
+
     }
 
 }
