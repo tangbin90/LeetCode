@@ -1,27 +1,26 @@
 package bnb;
 
-import java.io.IOException;
-import java.io.PushbackReader;
-import java.io.Reader;
-import java.io.StringReader;
+import java.awt.image.AreaAveragingScaleFilter;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
 public class CSVParser {
-    public static List<List<String>> parse(Reader in) throws IOException {
-        List<List<String>> ans = new ArrayList<>();
-        PushbackReader reader = new PushbackReader(in, 10);
+    public static List<List<String>> parse(Reader inreader) throws IOException {
         boolean inQuote = false;
-        List<String> record = new ArrayList<>();
-        StringBuilder line = new StringBuilder();
-        int ch;
-        while((ch = reader.read()) != -1){
-            char c = (char) ch;
-            if(c =='"'){
+        int cin;
+        List<List<String>> ans = new ArrayList<>();
+        List<String> currentLine = new ArrayList<>();
+        StringBuilder currentRecord = new StringBuilder();
+        PushbackReader reader = new PushbackReader(inreader, 10);
+        while( (cin = reader.read()) != -1){
+            char c = (char) cin;
+
+            if(c == '"'){
                 if(inQuote){
-                    int next= reader.read();
+                    int next = reader.read();
                     if(next == '"'){
-                        line.append('"');
+                        currentRecord.append('"');
                     } else {
                         inQuote = false;
                         if(next != -1){
@@ -31,38 +30,39 @@ public class CSVParser {
                 } else {
                     inQuote = true;
                 }
-            } else if( c == ',' && !inQuote){
-                record.add(line.toString());
-                line.setLength(0);
-            } else if((c == '\n' || c=='\r') && !inQuote){
-                record.add(line.toString());
-                line.setLength(0);
-
+            } else if((c == '\n'||c == '\r') && !inQuote){
+                currentLine.add(currentRecord.toString());
+                currentRecord.setLength(0);
                 if(c == '\r'){
-                    int next= reader.read();
-                    if(next != '\n' && next != -1 ){
+                    int next = reader.read();
+                    if(next != '\n'){
                         reader.unread(next);
                     }
                 }
-
-                ans.add(record);
-                record = new ArrayList<>();
+                ans.add(currentLine);
+                currentLine = new ArrayList<>();
+            } else if(c == ',' && !inQuote){
+                currentLine.add(currentRecord.toString());
+                currentRecord.setLength(0);
             } else {
-                line.append(c);
+                currentRecord.append(c);
             }
         }
 
         if(inQuote){
-            throw new RuntimeException("Illegal format");
+            System.out.println("Illegal format!");
+            return ans;
         }
 
-        if (line.length() > 0 || !record.isEmpty()) {
-            record.add(line.toString());
-            ans.add(record);
+        if(currentLine.size() > 0 || currentRecord.length() > 0){
+            if(currentRecord.length() > 0){
+                currentLine.add(currentRecord.toString());
+            }
+
+            ans.add(currentLine);
         }
 
         return ans;
-
     }
 
     public static void main(String[] args) throws Exception{
