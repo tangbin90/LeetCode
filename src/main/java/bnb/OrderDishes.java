@@ -25,7 +25,7 @@ public class OrderDishes {
      * 目标： 找到总价最低的购买组合，凑齐用户需要的菜品（通常要求数量精确匹配，不能多也不能少）。
      * */
     public static class MenuItem{
-        String id;
+        public String id;
         Map<String, Integer> items;
         BigDecimal price;
 
