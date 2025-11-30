@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.LinkedHashSet;
 import java.util.PriorityQueue;
 
-public class BNB1st {
+public class RewardPoints {
 
 
 // Maximize Reward Points
