@@ -1,6 +1,7 @@
 package airbnb;
 
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
@@ -40,20 +41,21 @@ public class Order {
         }
     }
 
-    public static class Ordered{
-        List<MenuItem> items;
-        int totalPrice;
 
-        public Ordered(List<MenuItem> items, int totalPrice){
-            this.items = items;
-            this.totalPrice = totalPrice;
+    Map<String, Integer> mem = new HashMap<>();
+    public List<String> findTheBestSolution(List<String> orders, List<MenuItem> menu){
+        Map<String, Integer> orderMap = new HashMap<>();
+        for(String order : orders){
+            orderMap.put(order, orderMap.getOrDefault(order, 0) + 1);
         }
+
+        List<String> path = new LinkedList<>();
+        dfs(orderMap, menu, path);
     }
 
-    Map<String, Ordered> mem = new HashMap<>();
-    public Ordered findTheBestSolution(List<String> orders, List<MenuItem> menu){
+    public void dfs(Map<String, Integer> orderMap, )
 
-    }
+
 
     public String generageKey(List<String> orders){
         StringBuilder sb = new StringBuilder();
@@ -62,9 +64,4 @@ public class Order {
         }
         return sb.toString();
     }
-
-
-
-
-
 }
