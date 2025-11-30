@@ -1,6 +1,5 @@
-package bnb;
+package bnb.firstround;
 
-import java.awt.image.AreaAveragingScaleFilter;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;

@@ -1,6 +1,5 @@
-package bnb;
+package bnb.firstround;
 
-import java.util.Arrays;
 import java.util.PriorityQueue;
 
 public class RoundPrices {

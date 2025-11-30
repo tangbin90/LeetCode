@@ -1,11 +1,10 @@
 package practice;
 
-import bnb.OrderDishes;
+import bnb.firstround.OrderDishes;
 
 import java.io.IOException;
 import java.io.PushbackReader;
 import java.io.Reader;
-import java.math.BigDecimal;
 import java.util.*;
 
 public class Practice {
