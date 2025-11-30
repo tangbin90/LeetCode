@@ -1,9 +1,6 @@
 package airbnb;
 
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class Order {
     public static class MenuItem {
@@ -50,10 +47,23 @@ public class Order {
         }
 
         List<String> path = new LinkedList<>();
-        dfs(orderMap, menu, path);
+        return dfs(orderMap, menu, path);
     }
 
-    public void dfs(Map<String, Integer> orderMap, )
+    public List<MenuItem> dfs(Map<String, Integer> orderMap, List<MenuItem> menu, List<String> path){
+        if(orderMap.isEmpty()){
+            return new ArrayList<>();
+        }
+
+        for(MenuItem item : menu){
+            Map<String, Integer> newOrder = canUse(orderMap, item);
+            if(newOrder != null){
+
+            }
+        }
+    }
+
+    privae
 
 
 
